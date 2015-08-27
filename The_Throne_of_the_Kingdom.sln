@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test_Sungmoon", "Test_Sungmoon\Test_Sungmoon.vcxproj", "{4BA79B65-FDB7-4D0D-8038-66893A8A9128}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TOK_Client", "TOK_Client\TOK_Client.vcxproj", "{F89CE42B-0850-48AC-BD70-ADB7D30F29DE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TOK_Server", "TOK_Server\TOK_Server.vcxproj", "{B1D04EAF-11BB-4BC5-B1D6-37C2454530EA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test_Doljin", "Test_Doljin\Test_Doljin.vcxproj", "{D3459D87-9B4D-4B73-972A-19ACE9B18C7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BA79B65-FDB7-4D0D-8038-66893A8A9128}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4BA79B65-FDB7-4D0D-8038-66893A8A9128}.Debug|Win32.Build.0 = Debug|Win32
+		{4BA79B65-FDB7-4D0D-8038-66893A8A9128}.Release|Win32.ActiveCfg = Release|Win32
+		{4BA79B65-FDB7-4D0D-8038-66893A8A9128}.Release|Win32.Build.0 = Release|Win32
+		{F89CE42B-0850-48AC-BD70-ADB7D30F29DE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F89CE42B-0850-48AC-BD70-ADB7D30F29DE}.Debug|Win32.Build.0 = Debug|Win32
+		{F89CE42B-0850-48AC-BD70-ADB7D30F29DE}.Release|Win32.ActiveCfg = Release|Win32
+		{F89CE42B-0850-48AC-BD70-ADB7D30F29DE}.Release|Win32.Build.0 = Release|Win32
+		{B1D04EAF-11BB-4BC5-B1D6-37C2454530EA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B1D04EAF-11BB-4BC5-B1D6-37C2454530EA}.Debug|Win32.Build.0 = Debug|Win32
+		{B1D04EAF-11BB-4BC5-B1D6-37C2454530EA}.Release|Win32.ActiveCfg = Release|Win32
+		{B1D04EAF-11BB-4BC5-B1D6-37C2454530EA}.Release|Win32.Build.0 = Release|Win32
+		{D3459D87-9B4D-4B73-972A-19ACE9B18C7D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D3459D87-9B4D-4B73-972A-19ACE9B18C7D}.Debug|Win32.Build.0 = Debug|Win32
+		{D3459D87-9B4D-4B73-972A-19ACE9B18C7D}.Release|Win32.ActiveCfg = Release|Win32
+		{D3459D87-9B4D-4B73-972A-19ACE9B18C7D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

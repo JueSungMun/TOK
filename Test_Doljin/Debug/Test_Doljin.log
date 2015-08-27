@@ -1,0 +1,29 @@
+﻿빌드 시작: 2015-08-27 오후 4:06:07
+     1>2 노드의 "c:\Users\Jue\documents\visual studio 2012\Projects\The_Throne_of_the_Kingdom\Test_Doljin\Test_Doljin.vcxproj" 프로젝트(Build 대상)입니다.
+     1>ClCompile:
+         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\\Library\\Include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>c:\users\jue\documents\visual studio 2012\projects\the_throne_of_the_kingdom\test_doljin\main.cpp(53): error C2065: 'g_pd3dDevice' : 선언되지 않은 식별자입니다.
+     1>c:\users\jue\documents\visual studio 2012\projects\the_throne_of_the_kingdom\test_doljin\main.cpp(59): error C2065: 'g_pd3dDevice' : 선언되지 않은 식별자입니다.
+     1>c:\users\jue\documents\visual studio 2012\projects\the_throne_of_the_kingdom\test_doljin\main.cpp(61): error C2065: 'g_pTexture' : 선언되지 않은 식별자입니다.
+     1>c:\users\jue\documents\visual studio 2012\projects\the_throne_of_the_kingdom\test_doljin\main.cpp(71): error C2065: 'g_hWnd' : 선언되지 않은 식별자입니다.
+     1>c:\users\jue\documents\visual studio 2012\projects\the_throne_of_the_kingdom\test_doljin\main.cpp(72): error C2065: 'g_hWnd' : 선언되지 않은 식별자입니다.
+     1>c:\users\jue\documents\visual studio 2012\projects\the_throne_of_the_kingdom\test_doljin\main.cpp(89): error C2065: 'g_pd3dDevice' : 선언되지 않은 식별자입니다.
+     1>c:\users\jue\documents\visual studio 2012\projects\the_throne_of_the_kingdom\test_doljin\main.cpp(102): error C2065: 'g_pd3dDevice' : 선언되지 않은 식별자입니다.
+     1>c:\users\jue\documents\visual studio 2012\projects\the_throne_of_the_kingdom\test_doljin\main.cpp(103): error C2065: 'g_pd3dDevice' : 선언되지 않은 식별자입니다.
+     1>c:\users\jue\documents\visual studio 2012\projects\the_throne_of_the_kingdom\test_doljin\main.cpp(103): error C2227: '->Release' 왼쪽은 클래스/구조체/공용 구조체/제네릭 형식을 가리켜야 합니다.
+                 ''unknown-type'' 형식입니다.
+     1>c:\users\jue\documents\visual studio 2012\projects\the_throne_of_the_kingdom\test_doljin\main.cpp(114): error C2065: 'g_pd3dDevice' : 선언되지 않은 식별자입니다.
+     1>c:\users\jue\documents\visual studio 2012\projects\the_throne_of_the_kingdom\test_doljin\main.cpp(114): error C2227: '->BeginScene' 왼쪽은 클래스/구조체/공용 구조체/제네릭 형식을 가리켜야 합니다.
+                 ''unknown-type'' 형식입니다.
+     1>c:\users\jue\documents\visual studio 2012\projects\the_throne_of_the_kingdom\test_doljin\main.cpp(121): error C2065: 'g_pd3dDevice' : 선언되지 않은 식별자입니다.
+     1>c:\users\jue\documents\visual studio 2012\projects\the_throne_of_the_kingdom\test_doljin\main.cpp(121): error C2227: '->EndScene' 왼쪽은 클래스/구조체/공용 구조체/제네릭 형식을 가리켜야 합니다.
+                 ''unknown-type'' 형식입니다.
+     1>c:\users\jue\documents\visual studio 2012\projects\the_throne_of_the_kingdom\test_doljin\main.cpp(122): error C2065: 'g_pd3dDevice' : 선언되지 않은 식별자입니다.
+     1>c:\users\jue\documents\visual studio 2012\projects\the_throne_of_the_kingdom\test_doljin\main.cpp(122): error C2227: '->Present' 왼쪽은 클래스/구조체/공용 구조체/제네릭 형식을 가리켜야 합니다.
+                 ''unknown-type'' 형식입니다.
+     1>"c:\Users\Jue\documents\visual studio 2012\Projects\The_Throne_of_the_Kingdom\Test_Doljin\Test_Doljin.vcxproj" 프로젝트를 빌드했습니다(Build 대상). - 실패
+
+빌드하지 못했습니다.
+
+경과 시간: 00:00:02.63
