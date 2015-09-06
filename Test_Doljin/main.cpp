@@ -1,27 +1,4 @@
-#pragma warning( disable : 4996 ) // disable deprecated warning 
-#include <d3d9.h>
-#include <d3dx9.h>
-#include <Windows.h>
-#include <tchar.h>
-
-#ifdef UNICODE
-  #ifndef _UNICODE
-    #define _UNICODE
-  #endif
-#endif
-#ifdef _UNICODE
-  #ifndef UNICODE
-    #define UNICODE
-  #endif
-#endif
-
-#define SCREEN_WIDTH 700
-#define SCREEN_HEIGHT 700
-#define IMG_BG _T("..\\Resource\\Sword.jpg")
-
-#pragma warning( default : 4996 ) 
-#pragma comment(lib, "d3d9.lib")
-#pragma comment(lib, "d3dx9.lib")
+#include "HeaderFiles.h"
 
 LPDIRECT3D9             g_pD3D       = NULL; // Used to create the D3DDevice
 LPDIRECT3DDEVICE9       renderDevice = NULL; // Our rendering device
@@ -32,44 +9,52 @@ LRESULT WINAPI MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam );
 HRESULT InitD3D( HWND hWnd );
 
 LPDIRECT3DTEXTURE9 bgTexture = NULL;
+Objects *bg;
 
-void InitWin(void)
+void LoadData(void)
 {
+	RECT bgrect = { 0,0,700,700 };
+	D3DXVECTOR3 pos,cent;
+	pos.x=0;
+	pos.y=0;
+	cent.x= .0f;
+	cent.y= .0f;
+	cent.z= .0f;
+
+	bg = new Objects;
+	bg->setCenter(cent);
+	bg->setPosition(pos);
+	bg->setSource(bgrect);
+	bg->setTexture(renderDevice, IMG_BG);
+	bg->setVisible(TRUE);
+}
+
+void Initilize(void)
+{	
 	// Register the window class
-	WNDCLASSEX g_wc = { sizeof(WNDCLASSEX), CS_CLASSDC, MsgProc, 0L, 0L,
+	WNDCLASSEX createWin = { sizeof(WNDCLASSEX), CS_CLASSDC, MsgProc, 0L, 0L,
 		GetModuleHandle(NULL), NULL, NULL, NULL, NULL,
 		_T("The Throne of The Kingdom"), NULL };
-	RegisterClassEx( &g_wc );
+	RegisterClassEx( &createWin );
 
 	// Create the application's window
 	hwnd = CreateWindow( _T("The Throne of The Kingdom"), _T("TOK"),
 		WS_OVERLAPPEDWINDOW, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT,
-		NULL, NULL, g_wc.hInstance, NULL );
-}
-
-void InitDX(void)
-{
+		NULL, NULL, createWin.hInstance, NULL );
+	
 	InitD3D(hwnd);
-	D3DXCreateSprite(g_pd3dDevice, &sprite);
+	if(!SUCCEEDED(D3DXCreateSprite(renderDevice, &sprite)))
+	{
+		MessageBox(NULL, _T("Error of create sprite"), NULL, NULL);
+	}
+	//ZeroMemory(&bg, sizeof(Objects));
 	//ZeroMemory(&om, sizeof(ObjectManager));
-}
 
-void LoadData(void)
-{
-	D3DXCreateTextureFromFileEx(g_pd3dDevice, IMG_BG,
-		D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2, 1, NULL, D3DFMT_UNKNOWN, D3DPOOL_MANAGED,
-		D3DX_FILTER_NONE, D3DX_FILTER_NONE, NULL, NULL, NULL, &g_pTexture);
-}
-
-void Initilize(void)
-{
-	InitWin();
-	InitDX();
 	LoadData();
 
 	// Show the window
-	ShowWindow( g_hWnd, SW_SHOWDEFAULT );
-	UpdateWindow( g_hWnd );
+	ShowWindow( hwnd, SW_SHOWDEFAULT );
+	UpdateWindow( hwnd );
 }
 
 //-----------------------------------------------------------------------------
@@ -84,9 +69,10 @@ HRESULT InitD3D( HWND hWnd )
     d3dpp.Windowed = TRUE;
     d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
     d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
+	d3dpp.hDeviceWindow = hWnd;
 
 	g_pD3D->CreateDevice( D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd,	D3DCREATE_SOFTWARE_VERTEXPROCESSING,
-		&d3dpp, &g_pd3dDevice );
+		&d3dpp, &renderDevice );
 
     return S_OK;
 }
@@ -99,10 +85,12 @@ VOID Cleanup()
 {
 	if (sprite != NULL)
 		sprite->Release();
-	if( g_pd3dDevice != NULL ) 
-		g_pd3dDevice->Release();
+	if( renderDevice != NULL ) 
+		renderDevice->Release();
 	if( g_pD3D != NULL )       
 		g_pD3D->Release();
+	if( bg != NULL)
+		delete bg;
 }
 
 //-----------------------------------------------------------------------------
@@ -111,23 +99,24 @@ VOID Cleanup()
 //-----------------------------------------------------------------------------
 VOID Render()
 {
-	if( SUCCEEDED( g_pd3dDevice->BeginScene() ) )
+	renderDevice->Clear(0,NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0,0,0), 1.0f, 0);
+	renderDevice->BeginScene();
+	if(bg->getTexture())
 	{
 		sprite->Begin(D3DXSPRITE_ALPHABLEND);
-		
-
+		sprite->Draw(bg->getTexture(), bg->getSource(), bg->getCenter(), bg->getPosition(), 0xFFFFFFFF);
 		sprite->End();
 		// End the scene
-		g_pd3dDevice->EndScene();
-		g_pd3dDevice->Present( NULL, NULL, NULL, NULL );
 	}
+	renderDevice->EndScene();
+	renderDevice->Present( NULL, NULL, NULL, NULL );
 }
 
 //-----------------------------------------------------------------------------
 // Name: MsgProc()
 // Desc: The window's message handler
 //-----------------------------------------------------------------------------
-LRESULT WINAPI MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
+LRESULT WINAPI MsgProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
 {
     switch( msg )
     {
@@ -137,7 +126,7 @@ LRESULT WINAPI MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
         return 0;
     }
 
-    return DefWindowProc( hWnd, msg, wParam, lParam );
+    return DefWindowProc( hwnd, msg, wParam, lParam );
 }
 
 //-----------------------------------------------------------------------------
@@ -147,7 +136,7 @@ LRESULT WINAPI MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
 INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR, INT )
 {
 	Initilize();
-	AllocConsole(); //콘솔창 소환
+	//AllocConsole(); //콘솔창 소환
 	MSG msg;
 	ZeroMemory( &msg, sizeof(msg) );
 	while( msg.message!=WM_QUIT )
